@@ -93,3 +93,18 @@ The command catalog was extracted from the supplied `DevShefzy.js` source. Exist
 - Set `MADARA_OWNER_NUMBER` to the owner phone number with country code (digits only). The owner can then send `.pair 234xxxxxxxxx` to the bot in a private chat to request a pairing code for that number.
 - The target account holder must personally enter the code in WhatsApp under **Settings → Linked devices → Link a device → Link with phone number**. Do not share the code with anyone else.
 - The five-session cap applies to active linked accounts and pending pairing attempts. Saved sessions are restored on restart only if the deployment has persistent storage configured; an ephemeral Render filesystem can lose authentication after a restart/redeploy.
+
+
+## Uchiha media + command update
+All runtime media assets live beside `server.js` in the repository root:
+- `menu-sticker.mp4` — converted to a non-deleting animated sticker for `.menu`
+- `madara-speech.m4a` — audio sent with `.menu` and `.madaraspeech`
+- `susano.mp4` — clip sent with `.susano`; `.susano-video` sends it in a private chat
+- `susano-audio.m4a` — audio paired with `.susano`
+- `sharingan.jpg`, `mangeko-sh.png`, `susano.png` — standalone command images
+
+Menu buttons now use the King Bug MD native-flow method: a generated message is stored before relay.
+The HTTP keep-alive heartbeat follows the King Bug MD pattern (every five minutes); platform restarts and free-plan suspension are still controlled by the host.
+`.allmenu` now lists implemented local commands only. API/provider-only and incomplete migration handlers were removed from the catalogue and their fake migration replies were removed.
+`.release` and `.release2` use local media download only for normal media or one-time media sent by the command user; the bot does not defeat another person's view-once privacy.
+`.planetary-devestation confirm` temporarily limits group posting to admins for 45 seconds and automatically reopens the group; it does not remove members.

@@ -1,0 +1,22 @@
+{
+  "name": "madara-uchiha-whatsapp-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Madara Uchiha themed multi-device WhatsApp bot with pairing panel and no-API commands",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check pair.js"
+  },
+  "engines": { "node": "20.x" },
+  "dependencies": {
+    "@whiskeysockets/baileys": "6.7.24",
+    "@hapi/boom": "^10.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "ffmpeg-static": "^5.2.0",
+    "pino": "^9.6.0",
+    "sharp": "^0.33.5"
+  }
+}
