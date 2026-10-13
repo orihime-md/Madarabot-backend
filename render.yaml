@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: madara-uchiha-bot
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: MADARA_OWNER_NUMBER
+        sync: false
+      - key: PAIRING_FIRST_CODE_TIMEOUT_MS
+        value: 90000
+      - key: PAIRING_IDLE_TTL_MS
+        value: 900000
+      - key: PAIRING_HARD_TTL_MS
+        value: 2700000
